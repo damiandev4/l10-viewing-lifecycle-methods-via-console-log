@@ -5,10 +5,16 @@ class App extends Component {
   updateMessage = event => this.setState({ message: event.target.value });
   componentDidMount() {
     // TODO: read from local storage, and if we find a message there, log it to the console
+    const savedMessage = localStorage.getItem("savedMessage");
+    if (savedMessage) {
+      console.log(savedMessage);
+    }
   }
   componentDidUpdate() {
     // TODO: save the message from our component's state to the browser's local storage
+   localStorage.setItem("savedMessage", this.state.message);
   }
+  
   render() {
     return (
       <main>
